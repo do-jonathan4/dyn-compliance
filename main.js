@@ -5,22 +5,20 @@ const peep = document.querySelector("#peep")
 const answer = document.querySelector("#answer")
 const myArr = [vol, pip, peep]
  
-document.addEventListener('keypress', function(e) {
+document.addEventListener('keypress', (e) => {
     if (e.key === "Enter") {
         result(calc(vol.value, pip.value, peep.value))
-        vol.setSelectionRange(0, 0)
         vol.focus()
+        vol.setSelectionRange(0, vol.value.length)
     }
 })
- 
-myArr.forEach(x => x.addEventListener('focus', e => x.value = ''))
  
 const calc = (a, b, c) => {
     const num1 = Number(a)
     const num2 = Number(b)
     const num3 = Number(c)
     const result = num1/(num2-num3)
-    return result ? `${result.toFixed(2)} mL/cmH2O` : 'Please use numbers'
+    return result ? `${result.toFixed(2)} mL/cmH2O` : 'Use only numbers please'
 }
  
 const result = n => {
